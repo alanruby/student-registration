@@ -2,7 +2,9 @@
 
 Student registration Project
 
-Some microservices were built to simulate the process of student registration.   
+Some microservices were built to simulate the process of student registration using containers and
+messaging service. The focus of this project is architecture and therefore this a is very simple app, not realistic
+or really functional.
 
 Application Spring Boot.
 
