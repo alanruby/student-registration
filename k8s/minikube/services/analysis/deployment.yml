@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: analysis
+  labels:
+    app: analysis
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: analysis
+      labels:
+        app: analysis
+    spec:
+      containers:
+        - name: analysis
+          image: alanruby/analysis:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8081
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: kube
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: analysis

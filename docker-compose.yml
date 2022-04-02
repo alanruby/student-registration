@@ -45,29 +45,29 @@ services:
       - "15672:15672"
     networks:
       - spring
-  eureka-server-app:
-    image: alanruby/eureka-server-app:latest
-    container_name: eureka-server-app
-    ports:
-      - "8761:8761"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    networks:
-      - spring
-    depends_on:
-      - zipkin
-  apigwy:
-    image: alanruby/apigwy:latest
-    container_name: apigwy
-    ports:
-      - "8083:8083"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    networks:
-      - spring
-    depends_on:
-      - zipkin
-      - eureka-server-app
+# eureka-server-app:
+#   image: alanruby/eureka-server-app:latest
+#   container_name: eureka-server-app
+#   ports:
+#     - "8761:8761"
+#   environment:
+#     - SPRING_PROFILES_ACTIVE=docker
+#   networks:
+#     - spring
+#   depends_on:
+#     - zipkin
+# apigwy:
+#   image: alanruby/apigwy:latest
+#   container_name: apigwy
+#   ports:
+#     - "8083:8083"
+#   environment:
+#     - SPRING_PROFILES_ACTIVE=docker
+#   networks:
+#     - spring
+#   depends_on:
+#     - zipkin
+#     - eureka-server-app
   student:
     image: alanruby/student:latest
     container_name: student
@@ -80,7 +80,7 @@ services:
       - postgres
     depends_on:
       - zipkin
-      - eureka-server-app
+ #     - eureka-server-app
       - postgres
       - rabbitmq
   analysis:
@@ -95,7 +95,7 @@ services:
       - postgres
     depends_on:
       - zipkin
-      - eureka-server-app
+  #    - eureka-server-app
       - postgres
       - rabbitmq
   notificationapp:
@@ -110,9 +110,10 @@ services:
       - postgres
     depends_on:
       - zipkin
-      - eureka-server-app
+ #     - eureka-server-app
       - postgres
       - rabbitmq
+ 
 networks:
   postgres:
     driver: bridge

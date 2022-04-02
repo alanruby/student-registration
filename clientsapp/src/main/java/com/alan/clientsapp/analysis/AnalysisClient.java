@@ -5,7 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 
-@FeignClient("analysis")
+@FeignClient(
+		name = "analysis",
+		url = "${clients.analysis.url}"
+)
 public interface AnalysisClient {
 	@GetMapping(path="api/v1/analysis/{studentId}")
 	public AnalysisCheckResponse isFraud(
